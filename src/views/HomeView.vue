@@ -5,6 +5,16 @@
         </div>
         <div class="col-4">
             Sidebar
+            <div>
+                <br>
+                <input v-model = "firstName" placeholder="Ime:" />
+                <input v-model= "secondName" placeholder="Prezime:" />
+                <br>
+                <button @click="mergeNames">Spoji ime i prezime</button>
+            </div>
+            <div>
+                <p>Spojeno ime i prezime: {{ mergedName }}</p>
+            </div>
         </div>
     </div>
   </template>
@@ -29,8 +39,18 @@
         return {
             cards,
             store,
+            firstName: '',
+            secondName:'',
+            mergedName:'',
         };
     },
+
+    methods: {
+        mergeNames() {
+            this.mergedName = this.firstName + ' ' + this.secondName;
+        },
+    },
+
     computed: {
         filteredCards() {
             // logika koja filtrira cards
